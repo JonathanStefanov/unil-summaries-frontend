@@ -1,7 +1,6 @@
-import SummaryCard from "@/components/summarycard";
+import SummaryCard from "@/components/summaries/summarycard";
 
 async function getData() {
-    console.log('fetching data')
     const res = await fetch(process.env.API_URL + '/api/summaries/')
 
     if (!res.ok) {
@@ -22,8 +21,6 @@ export default async function Summaries() {
       course: item.course_name,
       faculty: item.faculty_name,
     }));;
-
-    const test = await getData()
 
     return (
         <div>

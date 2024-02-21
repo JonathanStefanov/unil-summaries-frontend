@@ -4,7 +4,7 @@
  * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
  */
 import { Card } from "@/components/ui/card"
-
+import Link from "next/link";
 interface SummaryCardProps {
     summary: Summary;
   }
@@ -12,6 +12,7 @@ interface SummaryCardProps {
 const SummaryCard: React.FC<SummaryCardProps> = ({ summary }) => {
     return (
       <Card className="w-full max-w-lg">
+        <Link href={"/summaries/" + summary.id}>
         <div className="grid gap-2 p-6">
           <div className="flex items-center space-x-4">
             <div className="grid gap-1.5">
@@ -36,6 +37,7 @@ const SummaryCard: React.FC<SummaryCardProps> = ({ summary }) => {
             </div>
           </div>
         </div>
+        </Link>
       </Card>
     );
   };
