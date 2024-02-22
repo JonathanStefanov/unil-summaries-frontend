@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Cookies from "js-cookie";
+import { AuthContext } from "@/context/AuthContext";
 
 export function useIsLoggedIn() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -17,3 +18,11 @@ export function useIsLoggedIn() {
 
   return isLoggedIn;
 }
+
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+  return context;
+};

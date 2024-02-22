@@ -8,9 +8,11 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useAuth } from "@/hooks/auth";
 
 export default function SignInComponent() {
   const router = useRouter();
+  const { refreshAuthStatus } = useAuth();
 
   const {
     register,
@@ -43,6 +45,7 @@ export default function SignInComponent() {
       // Setting up the cookies
       Cookies.set("refreshToken", tokenData.refresh, { expires: 7 });
       Cookies.set("accessToken", tokenData.access, { expires: 7 });
+      refreshAuthStatus();
       router.push("/dashboard");
     } catch (error) {
       console.error("SignIn error:", error);

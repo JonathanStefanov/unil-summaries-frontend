@@ -1,10 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { useIsLoggedIn } from "@/hooks/auth";
+import { signOut } from "@/lib/auth";
+import { useAuth } from "@/hooks/auth";
 
 export function Navbar() {
-  const isLoggedIn = useIsLoggedIn();
+  const { isLoggedIn, refreshAuthStatus } = useAuth();
+
+  const handleSignOut = () => {
+    signOut();
+    refreshAuthStatus();
+  };
 
   return (
     <header className="flex h-14 items-center px-4 lg:px-6">
@@ -31,10 +37,16 @@ export function Navbar() {
             </Link>
             <Link
               className="text-sm font-medium underline-offset-4 hover:underline"
-              href="/sign-out"
+              href="/upload"
+            >
+              Upload
+            </Link>
+            <p
+              className="text-sm font-medium underline-offset-4 hover:underline"
+              onClick={handleSignOut}
             >
               Sign out
-            </Link>
+            </p>
           </>
         ) : (
           <Link
