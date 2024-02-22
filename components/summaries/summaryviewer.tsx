@@ -87,7 +87,13 @@ interface PDFViewerProps {
 const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
   return (
     <div>
-      <iframe src={pdfUrl} width="100%" height="500px" />
+      <iframe 
+      src={pdfUrl} 
+      width="100%"
+      height="1000px"
+      id="iframePdf"
+      type="application/pdf"
+       />
     </div>
   );
 };
