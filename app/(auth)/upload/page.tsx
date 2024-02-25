@@ -1,6 +1,7 @@
 "use client";
 
 import { useIsLoggedIn } from "@/hooks/auth";
+import SummaryUploadForm from "@/components/summaryuploadform";
 
 export default function Upload() {
   const isLoggedIn = useIsLoggedIn();
@@ -9,5 +10,5 @@ export default function Upload() {
     return <p className="font-bold">Please sign in to upload your summary</p>;
   }
 
-  return <p>Upload</p>;
+  return <SummaryUploadForm />;
 }
